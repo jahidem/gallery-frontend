@@ -9,7 +9,8 @@ const Header=({loading,setLoading,setChanged,changed})=>{
     axios.post("https://versity-db.herokuapp.com/gallery/post",{
       imageFileUUID: fileInfo.uuid
     }).then(()=>{
-      setChanged(1-changed);
+      setChanged(!changed);
+      setLoading(!loading);
     })
     
     //setImgUrl(fileInfo.cdnUrl + '-/scale_crop/280x280/center/');

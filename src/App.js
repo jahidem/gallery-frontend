@@ -5,7 +5,7 @@ import ImageContainer from './components/ImageConainer';
 const App = () => {
 
   const [loading,setLoading] = useState(true);
-  const [changed,setChanged] = useState(0);
+  const [changed,setChanged] = useState(false);
 
   return (<>
     <Box width="100vw" height="100vh"
@@ -13,7 +13,7 @@ const App = () => {
         alignItems="center"
         flexDirection="column">
         <Header loading={loading} setLoading={setLoading} setChanged={setChanged} changed={changed}/>
-        <ImageContainer loading = {loading} setLoading={setLoading} changed={changed}/>
+        <ImageContainer setChanged={setChanged} loading = {loading} setLoading={setLoading} changed={changed}/>
        
 </Box>
   </>);

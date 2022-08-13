@@ -12,6 +12,7 @@
 
 #style-5::-webkit-scrollbar-thumb
 {
+	background-color: #d7dbdd93;
 	background-color: #0ae;
 	
 	background-image: -webkit-gradient(linear, 0 0, 0 100%,

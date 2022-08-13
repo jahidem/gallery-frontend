@@ -1,11 +1,11 @@
-import { Box,Image ,Button} from "@chakra-ui/react";
+import { Box,Image ,Button } from "@chakra-ui/react";
 import { useState,useEffect } from "react";
 import axios from "axios";
 
 import GetImage from "./ViewImage";
-const ImageContainer = ({setLoading,changed,loading}) =>{
+const ImageContainer = ({setLoading,changed,loading,setChanged}) =>{
   const [allImage,setAllImage] = useState([]);
-  
+
   useEffect(()=>{
     const fetchImages= async()=>{
       axios.get('https://versity-db.herokuapp.com/gallery')
@@ -41,7 +41,11 @@ const ImageContainer = ({setLoading,changed,loading}) =>{
           overflowX= 'hidden'
           >
          {allImage.map((img)=>
-          <GetImage key={img.imageFileId} imageUUID={img.imageFileUUID}/>
+          <GetImage key={img.imageFileId} imageUUID={img.imageFileUUID}
+          setLoading={setLoading} setChanged={setChanged}
+          changed={changed} loading={loading}
+          
+          />
          ) }
   
           {/* <GetImage imageUUID='c54e4ed2-30de-442d-ba6a-b8beda907407'/>
