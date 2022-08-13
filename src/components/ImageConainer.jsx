@@ -8,7 +8,7 @@ const ImageContainer = ({setLoading,changed,loading}) =>{
   
   useEffect(()=>{
     const fetchImages= async()=>{
-      axios.get('https://versity-db.herokuapp.com/gallery')
+      axios.get('http://versity-db.herokuapp.com/gallery')
       .then(res=>{
         const data = res.data;
       setAllImage(data);

@@ -6,7 +6,7 @@ const Header=({loading,setLoading,setChanged,changed})=>{
   const handleUpload = (fileInfo) => {
     
     console.log("Only this uuid goes to backend -->" + fileInfo.uuid);
-    axios.post("https://versity-db.herokuapp.com/gallery/post",{
+    axios.post("http://versity-db.herokuapp.com/gallery/post",{
       imageFileUUID: fileInfo.uuid
     }).then(()=>{
       setChanged(1-changed);
