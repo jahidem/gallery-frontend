@@ -1,5 +1,5 @@
 
-import { Image } from "@chakra-ui/react";
+import { Image, LinkBox } from "@chakra-ui/react";
 import { Box, Text } from "@chakra-ui/react";
 import { FaDownload, FaExpand, FaInfoCircle } from "react-icons/fa";
 import React, { useState, useEffect } from "react";
@@ -21,7 +21,7 @@ import {
   useDisclosure
 } from '@chakra-ui/react'
 import axios from "axios";
-const GetImage = ({ imageUUID ,setLoading,setChanged,loading,changed}) => {
+const GetImage = ({ imageUUID, setLoading, setChanged, loading, changed }) => {
   const firstField = React.useRef()
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [isHovering, setIsHovering] = useState(false);
@@ -48,12 +48,12 @@ const GetImage = ({ imageUUID ,setLoading,setChanged,loading,changed}) => {
     onOpen();
 
   }
-  const deleteImage= ()=>{
+  const deleteImage = () => {
     setIsHovering(false);
     onClose();
-    const deleteReq= async ()=>{
+    const deleteReq = async () => {
       await axios.delete('https://versity-db.herokuapp.com/gallery/delete/'
-      +imageUUID);
+        + imageUUID);
       setLoading(!loading);
       setChanged(!changed);
     }
@@ -65,28 +65,17 @@ const GetImage = ({ imageUUID ,setLoading,setChanged,loading,changed}) => {
   }
   return ((imageFile != null) && <Box
     onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}
-    display="grid"
     alignContent="center"
     alignItems="center"
+   border={isHovering? "5px solid #2B6CB0" : "none"}
+   margin= {isHovering? "0px":"5px"}
+   borderRadius="4px"
+   onClick={openDrawer} 
   >
-
-
-    <Image
-      src={'https://ucarecdn.com/' + imageUUID + '/'}
-      h="30vh"
-      p="5px  5px"
-      objectFit='center' />
-    {isHovering && <Box
-      position="absolute"
-      justifySelf="center"
-      display="flex"
-      bgColor="#d7dbdd93"
-      p="10px"
-
-    >
-
-      < Box as={FaInfoCircle} size={48} onClick={openDrawer} />
-    </Box>}
+      <Image
+        src={'https://ucarecdn.com/' + imageUUID + '/'}
+        h="30vh"
+        objectFit='center' />
 
 
     <Drawer
@@ -97,8 +86,8 @@ const GetImage = ({ imageUUID ,setLoading,setChanged,loading,changed}) => {
     >
       <DrawerOverlay />
       <DrawerContent>
-        <DrawerCloseButton />
-        <DrawerHeader borderBottomWidth='1px'>
+        <DrawerCloseButton m="0 10px" />
+        <DrawerHeader m="8px 0"borderBottomWidth='1px'>
 
         </DrawerHeader>
 
