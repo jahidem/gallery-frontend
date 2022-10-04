@@ -50,6 +50,7 @@ const Header=({loading,setLoading,setChanged,changed})=>{
       publicKey="6c3c08a73b43963de87b"
       clearable
       imagesOnly
+      crop = "1:1"
        />
        </Box>
   </Box>)
